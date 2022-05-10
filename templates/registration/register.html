@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}회원가입{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="가입">
+    </form>
+</div>
+{% endblock content %}

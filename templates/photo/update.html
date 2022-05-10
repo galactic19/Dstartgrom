@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}수정{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h3>업로드 수정</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{  form.as_p }}
+        <input type="submit" class="btn btn-primary" value="수정하기">
+        <a href="{% url 'photo:photo_list' %}" class="btn btn-secondary">돌아가기</a>
+    </form>
+</div>
+
+{% endblock content %}

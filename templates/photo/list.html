@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Dstargram: 리스트{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% for list in photos %}
+        <div class="card mb-2">
+            <a href="{% url 'photo:photo_detail' pk=list.pk%}" class="p-5">
+                <img src="{{ list.photo.url }}" style="width:100%;" class="card-img-top">
+            </a>
+            <div class="card-body">
+                <p class="card-title">{{ list.author.username }}</p>
+                <p class="card-text">{{ list.text|truncatechars:20|linebreaksbr }} <a href="{% url 'photo:photo_detail' pk=list.pk%}">more</a></p>
+            </div>
+            <div class="card-footer text-end">
+                <div class="row">   
+                    <div class="col-6 text-start"><span class="small text-secondary">{{ list.updated }}</span></div>
+                    <div class="col-6 text-end">
+                        <a href="{% url 'photo:photo_delete' pk=list.pk %}" class="btn btn-danger btn-sm" rel="noopener noreferrer">삭제하기</a>
+                        <a href="{% url 'photo:photo_update' pk=list.pk %}" class="btn btn-primary btn-sm" rel="noopener noreferrer">글수정</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{% url 'photo:photo_upload' %}" class="btn btn-primary">스토리 등록</a>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}사진 업로드{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col-md-2">&nbsp;</div>
+    <div class="col-md-8">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="업로드" class="btn btn-success">
+            <a href="{% url 'photo:photo_list' %}" class="btn btn-primary">취소</a>
+        </form>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+</div>
+
+{% endblock content %}
